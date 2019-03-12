@@ -2,7 +2,7 @@ var mysql = require('mysql');
 var Table = require('cli-table2');
 var inquirer = require('inquirer');
 
-var displayTable = require('./displayConstructor.js');
+var displayTable = require('./displayConstructors.js');
 
 var TASKS = 6;
 
