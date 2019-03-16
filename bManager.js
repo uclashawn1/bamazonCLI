@@ -7,19 +7,20 @@ var displayTable = require('./displayConstructors.js');
 var TASKS = 6;
 
 var connection = mysql.createConnection({
-    host: 'localhost',
+    host: 'Lashawn',
     port: 3306,
     user: 'root',
     password: 'UCLA', //mysql workbench password
     database:  'bamazon'
 });
+  
+connection.connect(function(err) {
+    if (err) throw err;
+    console.log("Connected!");
+  });
 
-connection.connect(function (err) {
-    if (err) {
-        console.log('Error connecting to Db');
-        throw err;
-    }
-});
+
+
 
 // Prompt Manager for desire to continue or end connection to database
 function promptManager() {
