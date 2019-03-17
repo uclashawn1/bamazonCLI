@@ -10,7 +10,7 @@ var displayTable = function() {
     	this.results = results;
 	    for (var i=0; i <this.results.length; i++) {
 	        this.table.push(
-	            [this.results[i].ItemID, this.results[i].ProductName, '$'+ this.results[i].Price, this.results[i].StockQuantity] );
+	            [this.results[i].Item_ID, this.results[i].ProductName, '$'+ this.results[i].Price, this.results[i].StockQuantity] );
 	    }
     	console.log('\n' + this.table.toString());
 	};

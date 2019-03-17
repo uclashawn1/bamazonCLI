@@ -1,8 +1,8 @@
-DROP DATABASE if EXISTS bamazonDB;
+DROP DATABASE if EXISTS bamazon;
 
-CREATE DATABASE bamazonDB;
+CREATE DATABASE bamazon;
 
-USE bamazonDB;
+USE bamazon;
 
 CREATE TABLE products (
   Item_ID INT (11) AUTO_INCREMENT NOT NULL,
@@ -23,6 +23,6 @@ VALUES ("Tekken", "Games", 24.99, 5),
         ("Thor: Ragnarok", "Movies", 21.50, 10),
         ("Lenovo Flex", "Computers", 1295.99, 3),
         ("HP", "Computers", 669.99, 7),
-        ("Dell", "Computers", 599.99, 3)
+        ("Dell", "Computers", 599.99, 3);
 
--- SELECT * FROM products
+SELECT * FROM products

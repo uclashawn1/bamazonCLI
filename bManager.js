@@ -7,11 +7,16 @@ var displayTable = require('./displayConstructors.js');
 var TASKS = 6;
 
 var connection = mysql.createConnection({
-    host: 'Lashawn',
-    port: 3306,
-    user: 'root',
-    password: 'UCLA', //mysql workbench password
-    database:  'bamazon'
+    host: '127.0.0.1',
+	port: 3306,
+	user: 'root',
+	password: 'ucLAshawn', //mysql workbench password
+	database:  'bamazon'
+    // host: 'Lashawn',
+    // port: 3306,
+    // user: 'root',
+    // password: 'UCLA', //mysql workbench password
+    // database:  'bamazon'
 });
   
 connection.connect(function(err) {
@@ -75,16 +80,16 @@ function addInventory() {
 
     }]).then(function(answer) {
 
-        connection.query('SELECT * FROM products WHERE ?', {ItemID: answer.id},function(err,res) {
+        connection.query('SELECT * FROM products WHERE ?', {Item_ID: answer.id},function(err,res) {
             itemQuantity = res[0].StockQuantity + parseInt(answer.quantity);
 
             connection.query("UPDATE products SET ? WHERE ?", [{
                 StockQuantity: itemQuantity
             }, {
-                ItemID: answer.id
+                Item_ID: answer.id
             }], function(err, results) {});
 
-            connection.query('SELECT * FROM products WHERE ?', {ItemID: answer.id},function(err,results) {
+            connection.query('SELECT * FROM products WHERE ?', {Item_ID: answer.id},function(err,results) {
                 console.log('\n The Stock Quantity was updated- see Inventory Table\n');   
                 displayForManager(results);
                 promptManager();
@@ -137,7 +142,7 @@ function deleteProduct() {
     }]).then(function(answer) {
 
         connection.query("DELETE FROM products WHERE ?", {
-            ItemID: answer.id
+            Item_ID: answer.id
         }, function(err, results) {
             console.log('\n  The product was deleted - See the Inventory Table\n');
             connection.query('SELECT * FROM products', function(err, results){  

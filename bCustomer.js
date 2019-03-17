@@ -5,10 +5,10 @@ var inquirer = require('inquirer');
 var displayTable = require('./displayConstructors.js');
 
 var connection = mysql.createConnection({
-	host: 'localhost',
+	host: '127.0.0.1',
 	port: 3306,
 	user: 'root',
-	password: 'root', //mysql workbench password
+	password: 'ucLAshawn', //mysql workbench password
 	database:  'bamazon'
 });
 
@@ -44,7 +44,7 @@ var purchaseItem = function() {
 
 	}]).then(function(answer) {
 		// Query the database for info about the item including the quantity currently in stock. 
-		connection.query('SELECT ProductName, DepartmentName, Price, StockQuantity FROM products WHERE ?', {ItemID: answer.id}, function(err,res) {
+		connection.query('SELECT ProductName, DepartmentName, Price, StockQuantity FROM products WHERE ?', {Item_ID: answer.id}, function(err,res) {
 			
 		console.log('\n  You would like to buy ' + answer.quantity + ' ' + res[0].ProductName + ' ' + res[0].DepartmentName + ' at $' + res[0].Price + ' each'
 			);
@@ -55,7 +55,7 @@ var purchaseItem = function() {
 				{
 					StockQuantity: itemQuantity
 				}, {
-					ItemID: answer.id
+					Item_ID: answer.id
 				}], function(err,res) {
 					});	
 				var cost = res[0].Price * answer.quantity;
